@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>How to install tensorflow-gpu</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<article>
+		<div class= "container"
+		<header><h2>How to install tensorflow-gpu</h2></header>
+		<p>
+			Tensorflow is one of the most popular AI frameworks and by utilizing a CUDA enabled GPU we can make 
+			it a lot faster. There are many ways to install tensorflow-gpu, but instructions found on the internet can 
+			be confusing and overwhelming to a newcomer. So here I try to present the most straightforward way of 
+			Installing tensorflow-gpu on your local machine.
+			NB: Instructions provided are applicable for both Linux and Windows. However, for Linux, using docker
+			is the easiest method. <a href="https://www.tensorflow.org/install/docker">Here are the instructions of how to install tensorflow-gpu on docker</a>.
+		</p>
+		<p>
+		Requirements:
+			<ol>
+			<li>A CUDA enabled GPU: You need a CUDA enabled Nvidia Graphics Card. Check the specifications 
+			to see if your GPU has CUDA cores or not. </li>
+			<li>Nvidia Graphics Driver: If you are on a windows machine then I recommend installing Geforce 
+			Experience, it will automatically update your graphics drivers.</li>
+			<li>Anaconda: Anaconda is one of the most popular data science platforms. It has many libraries 
+			preinstalled for you. Also, it lets you create different environments with different versions of 
+			python and libraries. <a href="https://www.anaconda.com/products/distribution">You can download anaconda from here.</a></li>
+			</ol>
+		</p>
+		
+		<p>
+			Instructions:
+			<ol>
+				<li> Go to <a href="https://www.tensorflow.org/install/source#gpu">https://www.tensorflow.org/install/source#gpu</a>. Here we can see a list of tensorflow 
+				versions with their requirements. </li>
+				<span class="image fit"><img src="images/tf/01.png" alt="" /></span>
+				
+				<li> Now check the availability of tensorflow gpu and cudnn. Go to www.anaconda.org and search 
+				for the package tensorflow-gpu. You will see a list of packages. Filter your OS platform. will now 
+				see a shortened list. </li>
+				<span class="image fit"><img src="images/tf/02.png" alt="" /></span>
+				Then search for cudnn. Filter like before. From these three lists, find an appropriate 
+				combination. For example, tensorflow-gpu version 2.6.0 with cudnn 8.1 works perfectly. You can 
+				also access older versions by going inside these packages.
+				<span class="image fit"><img src="images/tf/03.png" alt="" /></span>
+				N.B: You can ask why we are only matching tensorflow version with only cudnn and not CUDA. 
+				This is because required version of CUDA is included in the cudnn package that we will see later.
+				So, we don’t have to worry about CUDA version. </li>
+
+				<li> Now open anaconda prompt and create a new environment. Some basic conda codes can be 
+				found here. Choose any name for the environment. Choose python version according to the 
+				build requirements above.</li>
+					<center><b>conda create --name envname python=3.8</b> </center>
+				This will install a bunch of stuffs and set up a new environment for you. After installation activate the 
+				new environment.
+					<center><b>conda activate envname</b></center>
+
+				<li> Install your desired version of cudnn. Be careful of the versions that are being installed </li>
+					<center><b>conda install -c esri cudnn=8.1</b></center>
+				<span class="image fit"><img src="images/tf/04.png" alt="" /></span>
+				After this is finished, install tensorflow-gpu.
+					<center><b>conda install tensorflow-gpu=2.6.0</b></center>
+				
+				<li> Check if your GPU is recognized by typing the following code in your python prompt, Jupiter 
+				notebook or any other IDE of your choice. </li>
+					<center><b>tf.config.list_physical_devices('GPU')</b></center>
+				If something like this appears then you are good to go
+				<span class="image fit"><img src="images/tf/05.png" alt="" /></span>
+			</ol>
+		</p>	
+		</div>
+		</article>
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
